@@ -1,0 +1,6 @@
+@UniversityForumAPI_HostAddress = http://localhost:5182
+
+GET {{UniversityForumAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
