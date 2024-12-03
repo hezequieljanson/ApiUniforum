@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UniversityForumAPI.Data;
+using UniversityForumAPI.DTOs.TopicDTOs;
 using UniversityForumAPI.Models;
 
 namespace UniversityForumAPI.Repositories.TopicRepository
@@ -45,9 +46,19 @@ namespace UniversityForumAPI.Repositories.TopicRepository
             }
         }
 
-        public async Task<IEnumerable<Topic>> GetRecentTopicsAsync(int limit)
+        public async Task<IEnumerable<TopicDto>> GetRecentTopicsAsync(int limit)
         {
             return await _context.Topics
+                .Select(t => new TopicDto {
+                Id = t.Id,
+                Title = t.Title,
+                Content = t.Content,
+                CreatedAt = t.CreatedAt,
+                UserName = t.User.Name,
+                GroupId = t.GroupId,
+                GroupName = t.Group.Name,
+                UserId = t.UserId
+                } )
                 .OrderByDescending(t => t.CreatedAt)
                 .Take(limit)
                 .ToListAsync();  // Retorna os tópicos mais recentes

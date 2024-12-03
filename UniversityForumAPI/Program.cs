@@ -51,6 +51,7 @@ builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<GroupService>();
 builder.Services.AddScoped<TopicService>();
 builder.Services.AddScoped<CommentService>();
+builder.Services.AddScoped<SearchService>();
 
 
 // Dependências

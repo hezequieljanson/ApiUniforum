@@ -107,16 +107,7 @@ namespace UniversityForumAPI.Services
 
         public async Task<IEnumerable<TopicDto>> GetRecentTopicsAsync(int limit)
         {
-            var topics = await _topicRepository.GetRecentTopicsAsync(limit);
-
-            return topics.Select(t => new TopicDto
-            {
-                Id = t.Id,
-                Title = t.Title,
-                Content = t.Content,
-                CreatedAt = t.CreatedAt,
-                UserId = t.UserId  // Certifique-se de incluir o UserId aqui
-            }).ToList();
+            return await _topicRepository.GetRecentTopicsAsync(limit);
         }
     }
 }

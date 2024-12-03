@@ -1,4 +1,5 @@
-﻿using UniversityForumAPI.Models;
+﻿using UniversityForumAPI.DTOs.TopicDTOs;
+using UniversityForumAPI.Models;
 
 namespace UniversityForumAPI.Repositories.TopicRepository
 {
@@ -9,6 +10,6 @@ namespace UniversityForumAPI.Repositories.TopicRepository
         Task CreateAsync(Topic topic);
         Task UpdateAsync(Topic topic);
         Task DeleteAsync(int id);
-        Task<IEnumerable<Topic>> GetRecentTopicsAsync(int limit);
+        Task<IEnumerable<TopicDto>> GetRecentTopicsAsync(int limit);
     }
 }
